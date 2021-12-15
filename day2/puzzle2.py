@@ -4,4 +4,17 @@ class Puzzle2:
         for x in puzzle_input:
             direction, amount = x.split(" ")
             parsed_content.append((direction, int(amount)))
+
         self.puzzle_input = parsed_content
+
+    def calculate_position(self):
+        horizontal = 0
+        depth = 0
+        for direction,amount in self.puzzle_input:
+            if direction == 'forward':
+                horizontal += amount
+            elif direction == 'down':
+                depth += amount
+            elif direction == 'up':
+                depth -= amount
+        return horizontal*depth
