@@ -6,4 +6,8 @@ class Puzzle:
         print(f"{self.puzzle_input}")
 
     def calculate_increase(self):
-        return 0
+        count = 0
+        for i,value in enumerate(self.puzzle_input):
+            if len(self.puzzle_input) > (i+1) and int(self.puzzle_input[i+1]) > int(value):
+                count += 1
+        return count

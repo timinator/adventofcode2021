@@ -7,6 +7,6 @@ class TestPuzzle:
         p = Puzzle("171\n154\n155\n")
         assert p.puzzle_input == "171\n154\n155\n"
     def test_calculate_increase(self):
-        data = Path("day1/puzzle_input.txt").read_text()
+        data = Path("day1/test_puzzle_input.txt").read_text().rstrip().split("\n")
         p = Puzzle(data)
         assert p.calculate_increase() == 7
