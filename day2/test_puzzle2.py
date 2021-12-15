@@ -11,3 +11,8 @@ class TestPuzzle2:
         data = Path("day2/test_puzzle2_input.txt").read_text().rstrip().split("\n")
         p = Puzzle2(data)
         assert p.calculate_position() == 150
+
+    def test_calculate_updated_position(self):
+        data = Path("day2/test_puzzle2_input.txt").read_text().rstrip().split("\n")
+        p = Puzzle2(data)
+        assert p.calculate_updated_position() == 900

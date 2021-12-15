@@ -18,3 +18,17 @@ class Puzzle2:
             elif direction == 'up':
                 depth -= amount
         return horizontal*depth
+
+    def calculate_updated_position(self):
+        horizontal = 0
+        depth = 0
+        aim = 0
+        for direction,amount in self.puzzle_input:
+            if direction == 'forward':
+                horizontal += amount
+                depth += aim*amount
+            elif direction == 'down':
+                aim += amount
+            elif direction == 'up':
+                aim -= amount
+        return horizontal*depth
