@@ -12,6 +12,16 @@ class Puzzle3:
             epsilon += min(g, key=g.get)
         return int(gamma,2) * int(epsilon,2)
 
+    def calculate_gamma_epsilon_alternative(self):
+        gamma = ''
+        epsilon = ''
+        data = list(zip(*self.puzzle_input))
+        for i in range(len(data)):
+            g = self.group(data[i])
+            gamma += max(g, key=g.get)
+            epsilon += min(g, key=g.get)
+        return int(gamma,2) * int(epsilon,2)
+
     def group(self, values):
         d = {}
         for x in values:
