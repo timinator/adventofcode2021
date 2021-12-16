@@ -6,13 +6,13 @@ class Puzzle3:
         gamma = ''
         epsilon = ''
         for i in range(len(self.puzzle_input[0])):
-            g = self.group(i)
+            values = [x[i] for x in self.puzzle_input]
+            g = self.group(values)
             gamma += max(g, key=g.get)
             epsilon += min(g, key=g.get)
         return int(gamma,2) * int(epsilon,2)
 
-    def group(self, index):
-        values = [x[index] for x in self.puzzle_input]
+    def group(self, values):
         d = {}
         for x in values:
             if d.get(x):
