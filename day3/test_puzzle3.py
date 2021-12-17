@@ -16,3 +16,8 @@ class TestPuzzle3:
         data = Path("day3/test_puzzle3_input.txt").read_text().rstrip().split("\n")
         p = Puzzle3(data)
         assert p.calculate_gamma_epsilon_alternative() == 198
+
+    def test_calculate_lifesupport_rating(self):
+        data = Path("day3/test_puzzle3_input.txt").read_text().rstrip().split("\n")
+        p = Puzzle3(data)
+        assert p.calculate_lifesupport_rating() == 230
