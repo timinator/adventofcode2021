@@ -3,6 +3,11 @@ class Puzzle4:
         self.numbers = puzzle_input.split("\n\n")[0].split(",")
         self.boards = [[y.split() for y in x.split("\n")] for x in puzzle_input.split("\n\n")[1:]]
 
+    def calculate_winning_board_score(self):
+        # For each board, add new number and check if has_match()
+        # if has_match, calculate board_score()
+        return 0
+
 class Board:
     def __init__(self, board_input):
         self.board_input = board_input
@@ -30,3 +35,9 @@ class Board:
 
     def has_match(self):
         return any(value == 5 for value in self.matches.values())
+
+    def score(self):
+        all_numbers = [number for numbers in self.board_input for number in numbers]
+        unmatched_numbers = set(all_numbers) - set(self.match_numbers)
+        unmatched_sum = sum([int(x) for x in unmatched_numbers])
+        return int(self.match_numbers[-1]) * unmatched_sum
