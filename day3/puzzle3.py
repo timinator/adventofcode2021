@@ -32,7 +32,6 @@ class Puzzle3:
         return d
 
     def calculate_lifesupport_rating(self):
-        print("got here")
         o2_rating = self.calculate_rating('1', max)
         co2_rating = self.calculate_rating('0', min)
         return o2_rating*co2_rating
