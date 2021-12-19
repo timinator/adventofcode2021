@@ -1,11 +1,14 @@
 class Puzzle4:
     def __init__(self, puzzle_input):
         self.numbers = puzzle_input.split("\n\n")[0].split(",")
-        self.boards = [[y.split() for y in x.split("\n")] for x in puzzle_input.split("\n\n")[1:]]
+        self.boards = [Board([y.split() for y in x.split("\n")]) for x in puzzle_input.split("\n\n")[1:]]
 
     def calculate_winning_board_score(self):
-        # For each board, add new number and check if has_match()
-        # if has_match, calculate board_score()
+        for number in self.numbers:
+            for b in self.boards:
+                b.new_number(number)
+                if b.has_match():
+                    return b.score()
         return 0
 
 class Board:
