@@ -2,10 +2,28 @@ import pdb
 
 class Puzzle5:
     def __init__(self, puzzle_input):
-        self.puzzle_input = [Line(x) for x in puzzle_input.split("\n")]
+        self.lines = [Line(x) for x in puzzle_input.split("\n")]
 
     def calculate_line_overlap(self):
-        return 0
+        grid = self.build_grid()
+        return self.find_overlap_count(grid)
+
+    def build_grid(self):
+        grid = {}
+        for line in self.lines:
+            for point in line.matching_points():
+                if grid.get(point):
+                    grid[point] += 1
+                else:
+                    grid[point] = 1
+        return grid
+
+    def find_overlap_count(self, grid):
+        count = 0
+        for key, value in grid.items():
+            if value >= 2:
+                count += 1
+        return count
 
 class Line:
     def __init__(self, line_input):
