@@ -1,0 +1,4 @@
+# Byte-compiled / optimized / DLL files
+day*/__pycache__/
+*.py[cod]
+*$py.class__pycache__/
