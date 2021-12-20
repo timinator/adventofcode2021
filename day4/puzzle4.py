@@ -1,3 +1,5 @@
+import pdb
+
 class Puzzle4:
     def __init__(self, puzzle_input):
         self.numbers = puzzle_input.split("\n\n")[0].split(",")
@@ -10,6 +12,15 @@ class Puzzle4:
                 if b.has_match():
                     return b.score()
         return 0
+
+    def calculate_worst_board_score(self):
+        matched_boards = []
+        for number in self.numbers:
+            for b in self.boards:
+                b.new_number(number)
+                if b.has_match() and b not in matched_boards:
+                    matched_boards.append(b)
+        return matched_boards[-1].score()
 
 class Board:
     def __init__(self, board_input):
@@ -28,7 +39,16 @@ class Board:
             'c4': 0
         }
 
+    def __eq__(self, other):
+        return self.board_input == other.board_input
+
+    def __ne__(self, other):
+        return self.board_input != other.board_input
+
     def new_number(self, number):
+        if self.has_match():
+            return
+
         for i,row in enumerate(self.board_input):
             for j,value in enumerate(row):
                 if value == number:

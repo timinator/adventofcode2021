@@ -16,6 +16,11 @@ class TestPuzzle4:
         p = Puzzle4(data)
         assert p.calculate_winning_board_score() == 4512
 
+    def test_calculate_worst_board_score(self):
+        data = Path("day4/test_puzzle4_input.txt").read_text().rstrip()
+        p = Puzzle4(data)
+        assert p.calculate_worst_board_score() == 1924
+
     def test_board_match(self):
         b = Board([['22', '13', '17', '11', '0'], ['8', '2', '23', '4', '24'], ['21', '9', '14', '16', '7'], ['6', '10', '3', '18', '5'], ['1', '12', '20', '15', '19']])
         b.new_number('0')
