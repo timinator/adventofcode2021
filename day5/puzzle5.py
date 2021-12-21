@@ -40,7 +40,7 @@ class Line:
             axis = 0
             common_value = self.coord1[1]
         else:
-            return []
+            return self.diagonal_points()
 
         points = []
         for i in range(min(self.coord1[axis], self.coord2[axis]), max(self.coord1[axis], self.coord2[axis])+1):
@@ -48,4 +48,14 @@ class Line:
                 points.append((common_value,i))
             else:
                 points.append((i,common_value))
+        return points
+
+    def diagonal_points(self):
+        points = []
+        foo = (self.coord1[0] - self.coord2[0]) == (self.coord1[1] - self.coord2[1])
+        for i in range(min(self.coord1[0], self.coord2[0]), max(self.coord1[0], self.coord2[0])+1):
+            if foo:
+                points.append(i+1, i+1)
+            else:
+                points.append(i+1, i-1)
         return points
