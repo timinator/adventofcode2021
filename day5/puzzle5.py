@@ -51,11 +51,12 @@ class Line:
         return points
 
     def diagonal_points(self):
-        points = []
-        foo = (self.coord1[0] - self.coord2[0]) == (self.coord1[1] - self.coord2[1])
-        for i in range(min(self.coord1[0], self.coord2[0]), max(self.coord1[0], self.coord2[0])+1):
-            if foo:
-                points.append(i+1, i+1)
+        matching = (self.coord1[0] - self.coord2[0]) == (self.coord1[1] - self.coord2[1])
+        starting_point = min(self.coord1, self.coord2) # uses first value in tuple as default
+        points = [starting_point]
+        while points[-1] != max(self.coord1, self.coord2):
+            if matching:
+                points.append((points[-1][0]+1, points[-1][1]+1))
             else:
-                points.append(i+1, i-1)
+                points.append((points[-1][0]+1, points[-1][1]-1))
         return points
